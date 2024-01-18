@@ -73,7 +73,7 @@ public class PlaceHolderMain extends PlaceholderExpansion {
                 if (BasicInfo.isFastMode) {
                     return (ChatColor.RED + "剩余时间: " + ChatColor.WHITE + format.format(1200000L - System.currentTimeMillis() + BasicInfo.StartTime));
                 } else {
-                    return (ChatColor.GREEN + "持续时间: " + ChatColor.WHITE + format.format(System.currentTimeMillis() - BasicInfo.startTime));
+                    return (ChatColor.GREEN + "持续时间: " + ChatColor.WHITE + format.format(System.currentTimeMillis() - BasicInfo.StartTime));
                 }
             case "goal":
                 BasicInfo.playerRole rolex = PlayerCache.getPlayerRole(player.getUniqueId());
