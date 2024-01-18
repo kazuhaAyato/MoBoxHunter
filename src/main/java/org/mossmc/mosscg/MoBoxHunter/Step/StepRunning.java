@@ -40,7 +40,7 @@ public class StepRunning {
         Main.logger.info(ChatColor.GREEN + "游戏进入到游玩阶段！");
         //TIMER
         BasicInfo.StartTime = System.currentTimeMillis();
-        Bukkit.getScheduler().runTaskTimer(Main.instance, new TickerRunnable(), 0L, 20L);
+        if(BasicInfo.isFastMode)Bukkit.getScheduler().runTaskTimer(Main.instance, new TickerRunnable(), 0L, 20L);
         BasicInfo.startTime = Main.getConfig.getInt("startTime");
         new BukkitRunnable() {
             @Override
