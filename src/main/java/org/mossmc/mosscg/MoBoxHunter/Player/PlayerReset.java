@@ -24,7 +24,7 @@ public class PlayerReset {
         PlayerCache.runnerStatusMap.remove(player.getUniqueId());
         ChatChannel.resetPlayerChat(player.getUniqueId());
         PlayerCache.playerList.add(player.getUniqueId());
-        Bukkit.broadcastMessage(ChatColor.GREEN+"玩家"+player.getName()+"加入了"+role.name()+"阵营");
+        Bukkit.broadcastMessage(ChatColor.GREEN + "玩家" + player.getName() + "加入了" + role.name() + "阵营");
         PlayerCompass.removeCompass(player);
         switch (role) {
             case Hunter:

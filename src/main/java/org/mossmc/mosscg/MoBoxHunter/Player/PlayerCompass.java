@@ -60,7 +60,7 @@ public class PlayerCompass {
                     });
                 }
             }
-        }.runTaskTimer(Main.instance,0,20);
+        }.runTaskTimer(Main.instance, 0, 20);
     }
 
     public static void hunterCompass(Player hunter) {
@@ -87,13 +87,13 @@ public class PlayerCompass {
         });
         String message;
         if (sameWorld[0]) {
-            message = ChatColor.GREEN+"距离你最近的逃亡者："+closeRunner[0].getName()+"，距离："+String.format("%.2f", minDistance[0]);
+            message = ChatColor.GREEN + "距离你最近的逃亡者：" + closeRunner[0].getName() + "，距离：" + String.format("%.2f", minDistance[0]);
             if (hunter.getWorld().getEnvironment().equals(World.Environment.NORMAL)) {
                 hunter.getInventory().forEach(itemStack -> {
                     if (itemStack != null) {
                         if (itemStack.getType().equals(Material.COMPASS)) {
                             CompassMeta compassMeta = (CompassMeta) itemStack.getItemMeta();
-                            if(compassMeta != null){
+                            if (compassMeta != null) {
                                 if (compassMeta.hasLodestone()) {
                                     itemStack.setAmount(0);
                                 }
@@ -107,7 +107,7 @@ public class PlayerCompass {
                     if (itemStack != null) {
                         if (itemStack.getType().equals(Material.COMPASS)) {
                             CompassMeta compassMeta = (CompassMeta) itemStack.getItemMeta();
-                            if(compassMeta != null){
+                            if (compassMeta != null) {
                                 compassMeta.setLodestone(closeRunner[0].getLocation());
                                 compassMeta.setLodestoneTracked(false);
                                 itemStack.setItemMeta(compassMeta);
@@ -117,7 +117,7 @@ public class PlayerCompass {
                 });
             }
         } else {
-            message = ChatColor.RED+"目前没有逃亡者跟你所处一个世界，无法追踪距离！";
+            message = ChatColor.RED + "目前没有逃亡者跟你所处一个世界，无法追踪距离！";
         }
         TextComponent textComponent = new TextComponent(message);
         hunter.spigot().sendMessage(ChatMessageType.ACTION_BAR, textComponent);

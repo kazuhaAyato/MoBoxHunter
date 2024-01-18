@@ -13,7 +13,7 @@ import org.mossmc.mosscg.MoBoxHunter.Main;
 import java.util.*;
 
 public class PlayerReconnect {
-    public static Map<UUID,Long> reconnectMap = new HashMap<>();
+    public static Map<UUID, Long> reconnectMap = new HashMap<>();
     public static List<UUID> kickCache = new ArrayList<>();
 
     public static int reconnectSecond = 300;
@@ -27,7 +27,7 @@ public class PlayerReconnect {
                     return;
                 }
                 reconnectMap.forEach((player, leave) -> {
-                    if (leave+reconnectSecond*1000L < System.currentTimeMillis()) {
+                    if (leave + reconnectSecond * 1000L < System.currentTimeMillis()) {
                         kickPlayer(player);
                     }
                 });
@@ -36,12 +36,12 @@ public class PlayerReconnect {
                 });
                 kickCache.clear();
             }
-        }.runTaskTimer(Main.instance,0,20);
+        }.runTaskTimer(Main.instance, 0, 20);
     }
 
     public static void addReconnectPlayer(Player player) {
-        reconnectMap.put(player.getUniqueId(),System.currentTimeMillis());
-        Bukkit.broadcastMessage(ChatColor.YELLOW + "玩家"+player.getName()+"离开了游戏！"+reconnectSecond+"秒后将自动移出本场游戏！");
+        reconnectMap.put(player.getUniqueId(), System.currentTimeMillis());
+        Bukkit.broadcastMessage(ChatColor.YELLOW + "玩家" + player.getName() + "离开了游戏！" + reconnectSecond + "秒后将自动移出本场游戏！");
     }
 
     public static void kickPlayer(UUID uuid) {
@@ -56,7 +56,7 @@ public class PlayerReconnect {
         ChatChannel.resetPlayerChat(uuid);
         kickCache.add(uuid);
         PlayerCheck.check();
-        Bukkit.broadcastMessage(ChatColor.RED + "玩家"+player.getName()+"超出等待时间未归！已被移出本场游戏！");
+        Bukkit.broadcastMessage(ChatColor.RED + "玩家" + player.getName() + "超出等待时间未归！已被移出本场游戏！");
         Bukkit.broadcastMessage(ChatColor.DARK_GREEN + "当前玩家列表：");
         Bukkit.broadcastMessage(ChatColor.RED + "猎人: " + PlayerCache.getHunterNameList());
         Bukkit.broadcastMessage(ChatColor.GREEN + "逃亡者: " + PlayerCache.getRunnerNameList());
@@ -67,7 +67,7 @@ public class PlayerReconnect {
         Player player = Bukkit.getPlayer(uuid);
         assert player != null;
         player.setInvulnerable(false);
-        Bukkit.broadcastMessage(ChatColor.GREEN + "玩家"+player.getName()+"已回到游戏！");
+        Bukkit.broadcastMessage(ChatColor.GREEN + "玩家" + player.getName() + "已回到游戏！");
         Bukkit.broadcastMessage(ChatColor.DARK_GREEN + "当前玩家列表：");
         Bukkit.broadcastMessage(ChatColor.RED + "猎人: " + PlayerCache.getHunterNameList());
         Bukkit.broadcastMessage(ChatColor.GREEN + "逃亡者: " + PlayerCache.getRunnerNameList());

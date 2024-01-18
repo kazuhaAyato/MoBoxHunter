@@ -1,5 +1,6 @@
 name: MoBoxHunter
-version: 1.0-SNAPSHOT
+version: '${project.version}'
+api-version: '1.17'
 main: org.mossmc.mosscg.MoBoxHunter.Main
 author: MossCG
 description: A plugin by MossCG for MoBoxMC.

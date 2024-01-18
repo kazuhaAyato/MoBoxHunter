@@ -30,7 +30,6 @@ public class ListenerDamage implements Listener {
             }
             if (PlayerCache.hunterList.contains(target.getUniqueId()) && PlayerCache.hunterList.contains(sender.getUniqueId())) {
                 event.setCancelled(true);
-                return;
             }
         }
     }

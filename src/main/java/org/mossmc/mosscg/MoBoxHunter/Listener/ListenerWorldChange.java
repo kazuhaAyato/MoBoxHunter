@@ -18,21 +18,21 @@ public class ListenerWorldChange implements Listener {
         if (PlayerCache.getPlayerRole(player.getUniqueId()).equals(BasicInfo.playerRole.Runner)) {
             if (!BasicInfo.runnerNetherWorld && environment.equals(World.Environment.NETHER)) {
                 BasicInfo.runnerNetherWorld = true;
-                Bukkit.broadcastMessage(ChatColor.RED+""+ChatColor.BOLD+"逃亡者已到达下界！");
+                Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "逃亡者已到达下界！");
             }
             if (!BasicInfo.runnerEndWorld && environment.equals(World.Environment.THE_END)) {
                 BasicInfo.runnerEndWorld = true;
-                Bukkit.broadcastMessage(ChatColor.RED+""+ChatColor.BOLD+"逃亡者已到达末地！");
+                Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "逃亡者已到达末地！");
             }
         }
         if (PlayerCache.getPlayerRole(player.getUniqueId()).equals(BasicInfo.playerRole.Hunter)) {
             if (!BasicInfo.hunterNetherWorld && environment.equals(World.Environment.NETHER)) {
                 BasicInfo.hunterNetherWorld = true;
-                Bukkit.broadcastMessage(ChatColor.RED+""+ChatColor.BOLD+"猎杀者已到达下界！");
+                Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "猎杀者已到达下界！");
             }
             if (!BasicInfo.hunterEndWorld && environment.equals(World.Environment.THE_END)) {
                 BasicInfo.hunterEndWorld = true;
-                Bukkit.broadcastMessage(ChatColor.RED+""+ChatColor.BOLD+"猎杀者已到达末地！");
+                Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "猎杀者已到达末地！");
             }
         }
     }

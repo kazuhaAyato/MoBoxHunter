@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="MoBoxPoint">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../MoBoxPoint.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

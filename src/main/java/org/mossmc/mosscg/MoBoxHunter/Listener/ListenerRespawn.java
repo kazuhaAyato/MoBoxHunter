@@ -16,7 +16,7 @@ public class ListenerRespawn implements Listener {
     @EventHandler
     public static void onRespawn(PlayerRespawnEvent event) {
         Player player = event.getPlayer();
-        PlayerDamage.setNoDamageTick(player, Main.getConfig.getInt("respawnSafeTime")*20);
+        PlayerDamage.setNoDamageTick(player, Main.getConfig.getInt("respawnSafeTime") * 20);
         if (GameBasicInfo.gameStatus.equals(GameStatus.gameStatus.Ending)) {
             event.setRespawnLocation(BasicInfo.endLocation);
         }

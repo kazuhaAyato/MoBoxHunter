@@ -53,6 +53,6 @@ public class PlayerRadar {
                     }
                 });
             }
-        }.runTaskTimer(Main.instance,0,20);
+        }.runTaskTimer(Main.instance, 0, 20);
     }
 }

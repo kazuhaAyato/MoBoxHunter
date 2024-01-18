@@ -22,14 +22,14 @@ public class ListenerCraft implements Listener {
             case Runner:
                 if (BasicInfo.compassUnlock) {
                     BasicInfo.compassUnlock = false;
-                    Bukkit.broadcastMessage(ChatColor.DARK_GREEN+"逃亡者"+player.getName()+"合成了指南针！猎人的指南针已被破坏！");
+                    Bukkit.broadcastMessage(ChatColor.DARK_GREEN + "逃亡者" + player.getName() + "合成了指南针！猎人的指南针已被破坏！");
                     PlayerCompass.listRemoveCompass(PlayerCache.hunterList);
                 }
                 break;
             case Hunter:
                 if (!BasicInfo.compassUnlock) {
                     BasicInfo.compassUnlock = true;
-                    Bukkit.broadcastMessage(ChatColor.GREEN+"猎人"+player.getName()+"合成了指南针！逃亡者的方向已暴露！");
+                    Bukkit.broadcastMessage(ChatColor.GREEN + "猎人" + player.getName() + "合成了指南针！逃亡者的方向已暴露！");
                     PlayerCompass.listGiveCompass(PlayerCache.hunterList);
                 }
                 break;

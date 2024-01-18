@@ -23,7 +23,8 @@ startTime: 10
 reconnectTime: 300
 #玩家重生后无敌时间
 respawnSafeTime: 10
-
+#时间模式-
+time-mode: 20
 #逃亡者雷达警告范围
 radarWarnDistance: 50
 
@@ -85,4 +86,7 @@ pointNameDeath: "hunter-standard-death"
 gameEndServerTeleport: true
 gameServerNext: "hunterStandard"
 gameServerLobby: "lobby"
+
+#服务器名字
+server-name: "§bExample"
 

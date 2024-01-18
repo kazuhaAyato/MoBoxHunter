@@ -15,37 +15,46 @@ import org.mossmc.mosscg.MoBoxHunter.BasicInfo;
 import org.mossmc.mosscg.MoBoxHunter.Main;
 import org.mossmc.mosscg.MoBoxHunter.Player.PlayerCache;
 import org.mossmc.mosscg.MoBoxHunter.Player.PlayerDamage;
+import org.mossmc.mosscg.MoBoxHunter.World.TickerRunnable;
 import org.mossmc.mosscg.MoBoxHunter.World.WorldRule;
 
 @SuppressWarnings("deprecation")
 public class StepRunning {
     public static void runStep() {
-        Main.logger.info(ChatColor.GREEN+"游戏正在进入游玩阶段！");
+        Main.logger.info(ChatColor.GREEN + "游戏正在进入游玩阶段！");
         GameBasicInfo.gameStatus = GameStatus.gameStatus.Running;
         Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
-        Bukkit.broadcastMessage(ChatColor.GOLD + "欢迎来到MoBoxMC-猎人游戏");
-        Bukkit.broadcastMessage(ChatColor.AQUA + "游戏规则：猎人需要阻止逃亡者击杀末影龙或击杀逃亡者以取得胜利。");
-        Bukkit.broadcastMessage(ChatColor.AQUA + "逃亡者需要在猎人的追杀下击败末影龙以取得胜利。逃亡者无法复活且由于任何原因死亡均会导致猎人胜利。");
+        Bukkit.broadcastMessage(ChatColor.GOLD + "极限追杀 §f@ " + Main.getConfig.getString("server-name"));
+        if (BasicInfo.isFastMode) {
+            Bukkit.broadcastMessage(ChatColor.AQUA + "游戏规则：猎人需要阻止逃亡者击杀末影龙或击杀逃亡者以取得胜利。");
+            Bukkit.broadcastMessage(ChatColor.AQUA + "逃亡者需要在猎人的追杀下§c生存20分钟§b. 逃亡者无法复活且由于任何原因死亡均会导致猎人胜利。");
+        } else {
+            Bukkit.broadcastMessage(ChatColor.AQUA + "游戏规则：猎人需要阻止逃亡者击杀末影龙或击杀逃亡者以取得胜利。");
+            Bukkit.broadcastMessage(ChatColor.AQUA + "逃亡者需要在猎人的追杀下击败末影龙以取得胜利。逃亡者无法复活且由于任何原因死亡均会导致猎人胜利。");
+        }
         Bukkit.broadcastMessage(ChatColor.AQUA + "猎人可以通过合成指南针来定位逃亡者的方向；逃亡者可以通过合成指南针摧毁猎人的指南针。");
-        Bukkit.broadcastMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "祝君好运，末地见！");
+        Bukkit.broadcastMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "祝君好运！");
         Bukkit.broadcastMessage(ChatColor.GREEN + "逃亡者: " + PlayerCache.getRunnerNameList());
         Bukkit.broadcastMessage(ChatColor.RED + "猎人: " + PlayerCache.getHunterNameList());
         Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
-        Main.logger.info(ChatColor.GREEN+"游戏进入到游玩阶段！");
+        Main.logger.info(ChatColor.GREEN + "游戏进入到游玩阶段！");
+        //TIMER
+        BasicInfo.StartTime = System.currentTimeMillis();
+        Bukkit.getScheduler().runTaskTimer(Main.instance, new TickerRunnable(), 0L, 20L);
         BasicInfo.startTime = Main.getConfig.getInt("startTime");
         new BukkitRunnable() {
             @Override
             public void run() {
                 if (BasicInfo.startTime > 0) {
                     String titleMain = InfoCountDown.getRemainSecondString(BasicInfo.startTime);
-                    String titleSub = ChatColor.GREEN+"观察四周...";
+                    String titleSub = ChatColor.GREEN + "观察四周...";
                     Bukkit.getOnlinePlayers().forEach(player -> {
-                        player.sendTitle(titleMain,titleSub);
-                        player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING,1.0f,1.0f);
+                        player.sendTitle(titleMain, titleSub);
+                        player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
                     });
                     BasicInfo.startTime--;
                 } else {
-                    String titleMain = ChatColor.AQUA+"Run!";
+                    String titleMain = ChatColor.AQUA + "Run!";
                     PlayerCache.playerList.forEach(uuid -> {
                         Player player = Bukkit.getPlayer(uuid);
                         if (player != null) {

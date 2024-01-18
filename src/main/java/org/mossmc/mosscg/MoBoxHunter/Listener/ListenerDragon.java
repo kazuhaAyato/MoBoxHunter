@@ -16,9 +16,9 @@ public class ListenerDragon implements Listener {
             BasicInfo.winner = BasicInfo.playerRole.Runner;
             BasicInfo.endLocation = event.getEntity().getLocation();
             if (event.getEntity().getKiller() != null) {
-                Bukkit.broadcastMessage(ChatColor.GOLD+"逃亡者"+event.getEntity().getKiller().getName()+"成功击杀末影龙！游戏结束！");
+                Bukkit.broadcastMessage(ChatColor.GOLD + "逃亡者" + event.getEntity().getKiller().getName() + "成功击杀末影龙！游戏结束！");
             } else {
-                Bukkit.broadcastMessage(ChatColor.GOLD+"逃亡者成功击杀末影龙！游戏结束！");
+                Bukkit.broadcastMessage(ChatColor.GOLD + "逃亡者成功击杀末影龙！游戏结束！");
             }
             StepEnding.runStep();
         }

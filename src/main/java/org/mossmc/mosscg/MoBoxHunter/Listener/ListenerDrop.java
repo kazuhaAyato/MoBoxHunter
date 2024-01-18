@@ -1,5 +1,6 @@
 package org.mossmc.mosscg.MoBoxHunter.Listener;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
@@ -12,6 +13,7 @@ public class ListenerDrop implements Listener {
         Item item = event.getItemDrop();
         if (item.getItemStack().getType().equals(Material.COMPASS)) {
             event.setCancelled(true);
+            event.getPlayer().sendMessage(ChatColor.RED + "你不可以丢弃指南针。");
         }
     }
 }

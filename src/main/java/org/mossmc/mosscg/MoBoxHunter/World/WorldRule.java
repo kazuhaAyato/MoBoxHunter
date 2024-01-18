@@ -31,9 +31,9 @@ public class WorldRule {
             world.setGameRule(GameRule.FALL_DAMAGE, true);
             world.setDifficulty(Difficulty.HARD);
         });
-        Location spawnLocation = new Location(PlayerLocation.hunterSpawnWorld,0.0,0.0,0.0);
+        Location spawnLocation = new Location(PlayerLocation.hunterSpawnWorld, 0.0, 0.0, 0.0);
         spawnLocation = PlayerLocation.hunterSpawnWorld.getHighestBlockAt(spawnLocation).getLocation();
-        spawnLocation.add(0.0,1.0,0.0);
+        spawnLocation.add(0.0, 1.0, 0.0);
         PlayerLocation.hunterSpawnWorld.setSpawnLocation(spawnLocation);
     }
 }

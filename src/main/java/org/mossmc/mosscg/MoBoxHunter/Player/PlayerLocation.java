@@ -57,28 +57,44 @@ public class PlayerLocation {
         double randomZ;
         switch (role) {
             case Hunter:
-                location = new Location(hunterSpawnWorld,0.0,0.0,0.0);
+                location = new Location(hunterSpawnWorld, 0.0, 0.0, 0.0);
                 direction = random.nextBoolean();
-                if (direction) {location.setX(hunterXBasic);} else {location.setX(-hunterXBasic);}
+                if (direction) {
+                    location.setX(hunterXBasic);
+                } else {
+                    location.setX(-hunterXBasic);
+                }
                 direction = random.nextBoolean();
-                if (direction) {location.setZ(hunterZBasic);} else {location.setZ(-hunterZBasic);}
-                randomX = random.nextInt(hunterXRandom*2)-hunterXRandom;
-                randomZ = random.nextInt(hunterZRandom*2)-hunterZRandom;
-                location.add(randomX,0.0,randomZ);
+                if (direction) {
+                    location.setZ(hunterZBasic);
+                } else {
+                    location.setZ(-hunterZBasic);
+                }
+                randomX = random.nextInt(hunterXRandom * 2) - hunterXRandom;
+                randomZ = random.nextInt(hunterZRandom * 2) - hunterZRandom;
+                location.add(randomX, 0.0, randomZ);
                 location = setHighestBlockLocation(location);
-                location.add(0.5,hunterYBasic,0.5);
+                location.add(0.5, hunterYBasic, 0.5);
                 break;
             case Runner:
-                location = new Location(runnerSpawnWorld,0.0,0.0,0.0);
+                location = new Location(runnerSpawnWorld, 0.0, 0.0, 0.0);
                 direction = random.nextBoolean();
-                if (direction) {location.setX(runnerXBasic);} else {location.setX(-runnerXBasic);}
+                if (direction) {
+                    location.setX(runnerXBasic);
+                } else {
+                    location.setX(-runnerXBasic);
+                }
                 direction = random.nextBoolean();
-                if (direction) {location.setZ(runnerZBasic);} else {location.setZ(-runnerZBasic);}
-                randomX = random.nextInt(runnerXRandom*2)-runnerXRandom;
-                randomZ = random.nextInt(runnerZRandom*2)-runnerZRandom;
-                location.add(randomX,0.0,randomZ);
+                if (direction) {
+                    location.setZ(runnerZBasic);
+                } else {
+                    location.setZ(-runnerZBasic);
+                }
+                randomX = random.nextInt(runnerXRandom * 2) - runnerXRandom;
+                randomZ = random.nextInt(runnerZRandom * 2) - runnerZRandom;
+                location.add(randomX, 0.0, randomZ);
                 location = setHighestBlockLocation(location);
-                location.add(0.5,runnerYBasic,0.5);
+                location.add(0.5, runnerYBasic, 0.5);
                 break;
             case Observer:
             default:

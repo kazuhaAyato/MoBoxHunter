@@ -3,7 +3,6 @@ package org.mossmc.mosscg.MoBoxHunter.Player;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
 import org.mossmc.mosscg.MoBoxHunter.BasicInfo;
 import org.mossmc.mosscg.MoBoxHunter.Main;
 
@@ -48,13 +47,13 @@ public class PlayerDistribute {
             if (remainRunner > 0) {
                 PlayerCache.runnerList.add(playerUUID);
                 PlayerCache.runnerStatusMap.put(playerUUID, BasicInfo.runnerStatus.Alive);
-                Main.logger.info(ChatColor.GREEN+"玩家"+player.getName()+"已被分配到逃亡者");
+                Main.logger.info(ChatColor.GREEN + "玩家" + player.getName() + "已被分配到逃亡者");
                 remainRunner--;
                 continue;
             }
             if (remainHunter > 0) {
                 PlayerCache.hunterList.add(playerUUID);
-                Main.logger.info(ChatColor.GREEN+"玩家"+player.getName()+"已被分配到猎杀者");
+                Main.logger.info(ChatColor.GREEN + "玩家" + player.getName() + "已被分配到猎杀者");
                 remainHunter--;
             }
         }

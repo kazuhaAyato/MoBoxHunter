@@ -53,7 +53,9 @@ public class ListenerKill implements Listener {
                     target.setGameMode(GameMode.SPECTATOR);
                     break;
                 case Hunter:
-                    target.sendMessage(ChatColor.GREEN+"你被杀死了，由于你的身份是猎人，所以你可以卷土重来！");
+                    Bukkit.broadcastMessage(ChatColor.RED + target.getName() + ChatColor.WHITE + "被击杀。");
+                    target.sendTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + "WASTED", ChatColor.RED + "你已阵亡", 10, 100, 10);
+                    target.sendMessage(ChatColor.GREEN + "你被逃亡者击杀了.但是你的猎人身份给予了你永生的权力。");
                     target.setGameMode(GameMode.SURVIVAL);
                     break;
                 case Runner:
@@ -62,14 +64,19 @@ public class ListenerKill implements Listener {
                         event.setDeathMessage(null);
                         break;
                     }
-                    target.sendMessage(ChatColor.RED+"你被杀死了，由于你的身份是逃亡者，你无法再复活！现在你可以观战！");
+                    target.sendTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + "WASTED", ChatColor.RED + "你已阵亡", 10, 100, 10);
+                    target.sendMessage(ChatColor.RED + "你已经阵亡。很抱歉你不能活到最后。");
                     PlayerCache.runnerStatusMap.replace(target.getUniqueId(), BasicInfo.runnerStatus.Dead);
                     BasicInfo.endLocation = target.getLocation();
                     target.setGameMode(GameMode.SPECTATOR);
                     PlayerChat.setPlayerChatObserver(target.getUniqueId());
-                    Bukkit.broadcastMessage(ChatColor.AQUA+"逃亡者"+target.getName()+"已被杀死！当前玩家名单：");
-                    Bukkit.broadcastMessage(ChatColor.GREEN+"逃亡者: "+PlayerCache.getRunnerNameList());
-                    Bukkit.broadcastMessage(ChatColor.RED+"猎人: "+PlayerCache.getHunterNameList());
+                    Bukkit.broadcastMessage(ChatColor.WHITE + "=======================================================");
+                    Bukkit.broadcastMessage(" ");
+                    Bukkit.broadcastMessage(ChatColor.AQUA + "逃亡者" + target.getName() + "已被击杀。 剩余玩家名单:");
+                    Bukkit.broadcastMessage(ChatColor.GREEN + "逃亡者: " + PlayerCache.getRunnerNameList());
+                    Bukkit.broadcastMessage(ChatColor.RED + "猎人: " + PlayerCache.getHunterNameList());
+                    Bukkit.broadcastMessage(" ");
+                    Bukkit.broadcastMessage(ChatColor.WHITE + "=======================================================");
                     break;
                 default:
                     break;

@@ -2,7 +2,6 @@ package org.mossmc.mosscg.MoBoxHunter.Player;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
 import org.mossmc.mosscg.MoBoxHunter.BasicInfo;
 
 import java.util.*;
@@ -16,7 +15,7 @@ public class PlayerCache {
     public static List<UUID> runnerList = new ArrayList<>();
     public static List<UUID> observerList = new ArrayList<>();
 
-    public static Map<UUID,BasicInfo.runnerStatus> runnerStatusMap = new HashMap<>();
+    public static Map<UUID, BasicInfo.runnerStatus> runnerStatusMap = new HashMap<>();
 
     public static String getHunterNameList() {
         StringBuilder nameList = new StringBuilder();

@@ -6,7 +6,7 @@
 
     <groupId>org.mossmc</groupId>
     <artifactId>MoBoxHunter</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1</version>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.jetbrains/annotations -->
@@ -15,6 +15,27 @@
             <artifactId>spigot-api</artifactId>
             <version>1.16.5-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mossmc</groupId>
+            <artifactId>MoBoxCore</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/MoBoxCore.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.mossmc</groupId>
+            <artifactId>MoBoxPoint</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/MoBoxPoint.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>me.clip</groupId>
+            <artifactId>placeholderapi</artifactId>
+            <version>2.11.5</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/PlaceholderAPI-2.11.5.jar</systemPath>
         </dependency>
     </dependencies>
 

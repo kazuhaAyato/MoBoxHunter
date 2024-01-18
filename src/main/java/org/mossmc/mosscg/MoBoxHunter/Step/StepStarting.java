@@ -10,12 +10,14 @@ import org.mossmc.mosscg.MoBoxCore.Game.GameBasicInfo;
 import org.mossmc.mosscg.MoBoxCore.Game.GameStart;
 import org.mossmc.mosscg.MoBoxCore.Game.GameStatus;
 import org.mossmc.mosscg.MoBoxCore.Player.PlayerMove;
+import org.mossmc.mosscg.MoBoxHunter.BasicInfo;
 import org.mossmc.mosscg.MoBoxHunter.Main;
 import org.mossmc.mosscg.MoBoxHunter.Player.*;
 
 public class StepStarting {
     public static void runStep() {
-        Main.logger.info(ChatColor.GREEN+"游戏正在进入启动阶段！");
+        Main.logger.info(ChatColor.GREEN + "游戏正在进入启动阶段！");
+        BasicInfo.isFastMode = BasicInfo.choseFull.size() < BasicInfo.choseTime.size();
         GameBasicInfo.gameStatus = GameStatus.gameStatus.Starting;
         PlayerDistribute.distribute();
         PlayerLocation.initLocation();
@@ -24,6 +26,7 @@ public class StepStarting {
         PlayerCache.playerList.forEach(uuid -> {
             try {
                 Player player = Bukkit.getPlayer(uuid);
+                player.getInventory().clear();
                 Location location = PlayerLocation.getRandomLocation(PlayerCache.getPlayerRole(uuid));
                 if (location != null && player != null) {
                     player.teleport(location);
@@ -40,7 +43,7 @@ public class StepStarting {
         EntityKill.addKillList(EntityType.DROPPED_ITEM);
         EntityKill.addKillList(EntityType.EXPERIENCE_ORB);
         EntityKill.killAllWorldTargetEntity();
-        Main.logger.info(ChatColor.GREEN+"游戏进入到启动阶段！");
+        Main.logger.info(ChatColor.GREEN + "游戏进入到启动阶段！");
         GameStart.startStart();
     }
 }

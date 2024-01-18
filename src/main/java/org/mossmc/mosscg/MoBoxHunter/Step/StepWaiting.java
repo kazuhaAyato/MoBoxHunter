@@ -11,11 +11,11 @@ import org.mossmc.mosscg.MoBoxHunter.World.WorldRule;
 
 public class StepWaiting {
     public static void runStep() {
-        Main.logger.info(ChatColor.GREEN+"游戏正在进入等待阶段！");
+        Main.logger.info(ChatColor.GREEN + "游戏正在进入等待阶段！");
         BasicInfo.teamDamage = Main.getConfig.getBoolean("teamDamage");
         BasicInfo.compassUnlock = Main.getConfig.getBoolean("startCompass");
         try {
-            Main.logger.info(ChatColor.GREEN+"正在初始化游戏......");
+            Main.logger.info(ChatColor.GREEN + "正在初始化游戏......");
             Game game = new Game() {
                 @Override
                 public int waitTime() {
@@ -66,13 +66,13 @@ public class StepWaiting {
             GameBasicInfo.gameStatus = GameStatus.gameStatus.Waiting;
             GameBasicInfo.startMethod = StepStarting.class.getMethod("runStep");
             GameBasicInfo.runMethod = StepRunning.class.getMethod("runStep");
-            Main.logger.info(ChatColor.GREEN+"游戏初始化完成！");
+            Main.logger.info(ChatColor.GREEN + "游戏初始化完成！");
         } catch (Exception e) {
             e.printStackTrace();
-            Main.logger.warning(ChatColor.RED+"游戏初始化失败！");
+            Main.logger.warning(ChatColor.RED + "游戏初始化失败！");
         }
         WorldRule.setBeforeStartStatus();
         GameWait.startWait();
-        Main.logger.info(ChatColor.GREEN+"游戏进入到等待阶段！");
+        Main.logger.info(ChatColor.GREEN + "游戏进入到等待阶段！");
     }
 }

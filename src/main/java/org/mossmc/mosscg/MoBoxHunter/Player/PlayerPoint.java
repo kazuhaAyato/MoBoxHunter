@@ -2,7 +2,6 @@ package org.mossmc.mosscg.MoBoxHunter.Player;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
 import org.mossmc.mosscg.MoBoxHunter.BasicInfo;
 import org.mossmc.mosscg.MoBoxHunter.Main;
 import org.mossmc.mosscg.MoBoxPoint.User.UserUpdate;
@@ -11,9 +10,9 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class PlayerPoint {
-    public static Map<UUID,Integer> playerPointMap = new HashMap<>();
-    public static Map<UUID,Integer> playerPointKillMap = new HashMap<>();
-    public static Map<Integer,UUID> playerPointRankMap = new HashMap<>();
+    public static Map<UUID, Integer> playerPointMap = new HashMap<>();
+    public static Map<UUID, Integer> playerPointKillMap = new HashMap<>();
+    public static Map<Integer, UUID> playerPointRankMap = new HashMap<>();
 
     public static List<UUID> playerCompleteList = new ArrayList<>();
 
@@ -43,20 +42,20 @@ public class PlayerPoint {
         pointNameDeath = Main.getConfig.getString("pointNameDeath");
 
         PlayerCache.runnerList.forEach(uuid -> {
-            addPlayerPoint(uuid,basicPoint);
+            addPlayerPoint(uuid, basicPoint);
             if (PlayerStatic.killCount.containsKey(uuid)) {
                 int kill = PlayerStatic.killCount.get(uuid);
-                playerPointKillMap.put(uuid,pointRunnerKill*kill);
-                addPlayerPoint(uuid,pointRunnerKill*kill);
+                playerPointKillMap.put(uuid, pointRunnerKill * kill);
+                addPlayerPoint(uuid, pointRunnerKill * kill);
             }
         });
 
         PlayerCache.hunterList.forEach(uuid -> {
-            addPlayerPoint(uuid,basicPoint);
+            addPlayerPoint(uuid, basicPoint);
             if (PlayerStatic.killCount.containsKey(uuid)) {
                 int kill = PlayerStatic.killCount.get(uuid);
-                playerPointKillMap.put(uuid,pointHunterKill*kill);
-                addPlayerPoint(uuid,pointHunterKill*kill);
+                playerPointKillMap.put(uuid, pointHunterKill * kill);
+                addPlayerPoint(uuid, pointHunterKill * kill);
             }
         });
 
@@ -72,14 +71,14 @@ public class PlayerPoint {
             });
         }
 
-        Map<UUID,Integer> cacheMap = new HashMap<>(playerPointMap);
+        Map<UUID, Integer> cacheMap = new HashMap<>(playerPointMap);
         UUID rankPlayer;
         rankPlayer = getMapMaxKey(cacheMap);
-        playerPointRankMap.put(1,rankPlayer);
+        playerPointRankMap.put(1, rankPlayer);
         rankPlayer = getMapMaxKey(cacheMap);
-        playerPointRankMap.put(2,rankPlayer);
+        playerPointRankMap.put(2, rankPlayer);
         rankPlayer = getMapMaxKey(cacheMap);
-        playerPointRankMap.put(3,rankPlayer);
+        playerPointRankMap.put(3, rankPlayer);
     }
 
     public static void savePlayerPoint() {
@@ -90,29 +89,29 @@ public class PlayerPoint {
         playerPointMap.forEach((uuid, integer) -> {
             OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
             if (!playerCompleteList.contains(uuid)) {
-                UserUpdate.userAddScore(player.getName(),pointNameMain,integer);
+                UserUpdate.userAddScore(player.getName(), pointNameMain, integer);
                 playerCompleteList.add(uuid);
             }
         });
 
         //记录玩家数据
-        playerCompleteList.forEach(uuid -> UserUpdate.userAddScore(uuid,pointNameTotal,1));
-        PlayerStatic.killCount.forEach((uuid, integer) -> UserUpdate.userAddScore(uuid,pointNameKill,integer));
-        PlayerStatic.deathCount.forEach((uuid, integer) -> UserUpdate.userAddScore(uuid,pointNameDeath,integer));
+        playerCompleteList.forEach(uuid -> UserUpdate.userAddScore(uuid, pointNameTotal, 1));
+        PlayerStatic.killCount.forEach((uuid, integer) -> UserUpdate.userAddScore(uuid, pointNameKill, integer));
+        PlayerStatic.deathCount.forEach((uuid, integer) -> UserUpdate.userAddScore(uuid, pointNameDeath, integer));
         if (BasicInfo.winner.equals(BasicInfo.playerRole.Hunter)) {
-            PlayerCache.hunterList.forEach(uuid -> UserUpdate.userAddScore(uuid,pointNameWin,1));
+            PlayerCache.hunterList.forEach(uuid -> UserUpdate.userAddScore(uuid, pointNameWin, 1));
         }
         if (BasicInfo.winner.equals(BasicInfo.playerRole.Runner)) {
-            PlayerCache.runnerList.forEach(uuid -> UserUpdate.userAddScore(uuid,pointNameWin,1));
+            PlayerCache.runnerList.forEach(uuid -> UserUpdate.userAddScore(uuid, pointNameWin, 1));
         }
     }
 
-    public static void addPlayerPoint(UUID uuid,int point) {
+    public static void addPlayerPoint(UUID uuid, int point) {
         if (!playerPointMap.containsKey(uuid)) {
-            playerPointMap.put(uuid,0);
+            playerPointMap.put(uuid, 0);
         }
         int oldPoint = playerPointMap.get(uuid);
-        playerPointMap.replace(uuid,oldPoint+point);
+        playerPointMap.replace(uuid, oldPoint + point);
     }
 
     public static int getPlayerWinnerPoint(UUID uuid) {
@@ -126,7 +125,7 @@ public class PlayerPoint {
         }
     }
 
-    public static UUID getMapMaxKey(Map<UUID,Integer> targetMap) {
+    public static UUID getMapMaxKey(Map<UUID, Integer> targetMap) {
         AtomicReference<UUID> playerReturn = new AtomicReference<>();
         final int[] playerPointMax = {0};
         targetMap.forEach((player, integer) -> {
