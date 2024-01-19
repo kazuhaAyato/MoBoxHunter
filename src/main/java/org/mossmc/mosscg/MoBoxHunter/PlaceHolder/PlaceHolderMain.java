@@ -69,10 +69,12 @@ public class PlaceHolderMain extends PlaceholderExpansion {
                 if (status == GameStatus.gameStatus.Waiting) {
                     return ChatColor.GRAY + "Not Available";
                 }
-                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+
                 if (BasicInfo.isFastMode) {
+                    SimpleDateFormat format = new SimpleDateFormat("mm:ss");
                     return (ChatColor.RED + "剩余时间: " + ChatColor.WHITE + format.format(1200000L - System.currentTimeMillis() + BasicInfo.StartTime));
                 } else {
+                    SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
                     return (ChatColor.GREEN + "持续时间: " + ChatColor.WHITE + format.format(System.currentTimeMillis() - BasicInfo.StartTime));
                 }
             case "goal":

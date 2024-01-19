@@ -29,11 +29,13 @@ public class ListenerInventory implements Listener {
             if(e.getCurrentItem() == null)return;
             if (Objects.requireNonNull(e.getCurrentItem() ).getType() == Material.CLOCK) {
                 BasicInfo.choseFull.remove(ChatColor.WHITE+e.getWhoClicked().getName());
+                BasicInfo.choseTime.remove(ChatColor.WHITE+e.getWhoClicked().getName());
                 BasicInfo.choseTime.add(ChatColor.WHITE+e.getWhoClicked().getName());
                 e.getWhoClicked().closeInventory();
                 e.getWhoClicked().sendMessage(ChatColor.GREEN + "投票成功，你投给了: 极速模式");
             } else if (Objects.requireNonNull(e.getCurrentItem()).getType() == Material.DRAGON_HEAD) {
                 BasicInfo.choseTime.remove(ChatColor.WHITE+e.getWhoClicked().getName());
+                BasicInfo.choseFull.remove(ChatColor.WHITE+e.getWhoClicked().getName());
                 BasicInfo.choseFull.add(ChatColor.WHITE+e.getWhoClicked().getName());
                 e.getWhoClicked().closeInventory();
                 e.getWhoClicked().sendMessage(ChatColor.RED + "投票成功，你投给了: 正常模式");

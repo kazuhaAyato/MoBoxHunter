@@ -1,5 +1,6 @@
 package org.mossmc.mosscg.MoBoxHunter.Listener;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,6 +18,8 @@ public class ListenerQuit implements Listener {
         switch (GameBasicInfo.gameStatus) {
             case Waiting:
                 PlayerCache.playerList.remove(player.getUniqueId());
+                BasicInfo.choseTime.remove(ChatColor.WHITE+player.getName());
+                BasicInfo.choseFull.remove(ChatColor.WHITE+player.getName());
                 break;
             case Starting:
             case Running:

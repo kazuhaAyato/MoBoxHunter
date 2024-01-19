@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class BasicInfo {
     public static String pluginName = "MoBoxHunter";
-    public static String pluginVersion = "V1.6.3.1.1915";
+    public static String pluginVersion = "v2.01";
     public static String gameName = "Hunter";
     public static ArrayList<String> choseTime = new ArrayList<>();
     public static ArrayList<String> choseFull = new ArrayList<>();

@@ -43,23 +43,23 @@ public class StepEnding {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
-        Bukkit.broadcastMessage(ChatColor.GREEN+"本局积分排行：");
-        Bukkit.broadcastMessage(ChatColor.GREEN+"第一名："+PlayerPoint.getRankPlayerName(1)+" - "+PlayerPoint.getRankPlayerPoint(1));
-        Bukkit.broadcastMessage(ChatColor.GREEN+"第二名："+PlayerPoint.getRankPlayerName(2)+" - "+PlayerPoint.getRankPlayerPoint(2));
-        Bukkit.broadcastMessage(ChatColor.GREEN+"第三名："+PlayerPoint.getRankPlayerName(3)+" - "+PlayerPoint.getRankPlayerPoint(3));
-        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
-        PlayerPoint.playerCompleteList.forEach(uuid -> {
-            Player player = Bukkit.getPlayer(uuid);
-            if (player != null) {
-                player.sendMessage(ChatColor.GREEN + "基础积分：" + PlayerPoint.basicPoint);
-                if (PlayerCache.getPlayerRole(uuid).equals(BasicInfo.winner)) {
-                    player.sendMessage(ChatColor.GREEN + "胜利积分：" + PlayerPoint.getPlayerWinnerPoint(uuid));
-                }
-                player.sendMessage(ChatColor.GREEN + "击杀积分：" + PlayerPoint.playerPointKillMap.getOrDefault(uuid, 0));
-                player.sendMessage(ChatColor.GREEN + "本局总积分：" + PlayerPoint.playerPointMap.get(uuid));
-            }
-        });
+//        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
+//        Bukkit.broadcastMessage(ChatColor.GREEN+"本局积分排行：");
+//        Bukkit.broadcastMessage(ChatColor.GREEN+"第一名："+PlayerPoint.getRankPlayerName(1)+" - "+PlayerPoint.getRankPlayerPoint(1));
+//        Bukkit.broadcastMessage(ChatColor.GREEN+"第二名："+PlayerPoint.getRankPlayerName(2)+" - "+PlayerPoint.getRankPlayerPoint(2));
+//        Bukkit.broadcastMessage(ChatColor.GREEN+"第三名："+PlayerPoint.getRankPlayerName(3)+" - "+PlayerPoint.getRankPlayerPoint(3));
+//        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
+//        PlayerPoint.playerCompleteList.forEach(uuid -> {
+//            Player player = Bukkit.getPlayer(uuid);
+//            if (player != null) {
+//                player.sendMessage(ChatColor.GREEN + "基础积分：" + PlayerPoint.basicPoint);
+//                if (PlayerCache.getPlayerRole(uuid).equals(BasicInfo.winner)) {
+//                    player.sendMessage(ChatColor.GREEN + "胜利积分：" + PlayerPoint.getPlayerWinnerPoint(uuid));
+//                }
+//                player.sendMessage(ChatColor.GREEN + "击杀积分：" + PlayerPoint.playerPointKillMap.getOrDefault(uuid, 0));
+//                player.sendMessage(ChatColor.GREEN + "本局总积分：" + PlayerPoint.playerPointMap.get(uuid));
+//            }
+//        });
         Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
         Main.logger.info(ChatColor.GREEN + "游戏进入到结束阶段！");
         GameEnd.startEnd();
