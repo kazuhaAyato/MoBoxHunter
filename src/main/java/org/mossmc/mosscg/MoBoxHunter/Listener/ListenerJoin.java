@@ -25,6 +25,7 @@ public class ListenerJoin implements Listener {
         switch (GameBasicInfo.gameStatus) {
             case Waiting:
                 PlayerCache.playerList.add(player.getUniqueId());
+                player.getInventory().clear();
                 player.setGameMode(GameMode.ADVENTURE);
                 PlayerDamage.disableDamage(player);
                 PlayerPick.disablePickUp(player);

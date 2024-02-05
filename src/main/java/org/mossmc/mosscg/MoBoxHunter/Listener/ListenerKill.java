@@ -55,7 +55,7 @@ public class ListenerKill implements Listener {
                 case Hunter:
                     Bukkit.broadcastMessage(ChatColor.RED + target.getName() + ChatColor.WHITE + "被击杀。");
                     target.sendTitle(ChatColor.DARK_RED + "" + ChatColor.BOLD + "WASTED", ChatColor.RED + "你已阵亡", 10, 100, 10);
-                    target.sendMessage(ChatColor.GREEN + "你被逃亡者击杀了.但是你的猎人身份给予了你永生的权力。");
+                    target.sendMessage(ChatColor.GREEN + "你阵亡了.但是你的猎人身份给予了你永生的权力。");
                     target.setGameMode(GameMode.SURVIVAL);
                     break;
                 case Runner:

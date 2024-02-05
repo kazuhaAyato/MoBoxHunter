@@ -22,9 +22,9 @@ public class Utils {
         lore.addAll(BasicInfo.choseTime);
         lore.add(" ");
         lore.add("§a点击投票！");
-        if(BasicInfo.choseTime.isEmpty()){
+        if (BasicInfo.choseTime.isEmpty()) {
             kit.setAmount(1);
-        }else{
+        } else {
             kit.setAmount(BasicInfo.choseTime.size());
         }
 
@@ -32,7 +32,8 @@ public class Utils {
         kit.setItemMeta(meta);
         return kit;
     }
-    public static ItemStack voteItem(){
+
+    public static ItemStack voteItem() {
         ItemStack kit = new ItemStack(Material.TOTEM_OF_UNDYING); //创建新的物品 是钻石胸甲
         ItemMeta meta = kit.getItemMeta(); //创建ItemMeta
         assert meta != null;
@@ -45,6 +46,7 @@ public class Utils {
         kit.setItemMeta(meta);
         return kit;
     }
+
     public static ItemStack voteNormal() {
         ItemStack kit = new ItemStack(Material.DRAGON_HEAD); //创建新的物品 是钻石胸甲
         ItemMeta meta = kit.getItemMeta(); //创建ItemMeta
@@ -61,9 +63,9 @@ public class Utils {
         lore.addAll(BasicInfo.choseFull);
         lore.add(" ");
         lore.add("§a点击投票！");
-        if(BasicInfo.choseFull.isEmpty()){
+        if (BasicInfo.choseFull.isEmpty()) {
             kit.setAmount(1);
-        }else{
+        } else {
             kit.setAmount(BasicInfo.choseFull.size());
         }
         meta.setLore(lore);

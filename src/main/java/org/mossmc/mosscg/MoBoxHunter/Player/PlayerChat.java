@@ -6,6 +6,7 @@ import org.mossmc.mosscg.MoBoxCore.Chat.ChatChannel;
 import java.util.UUID;
 
 public class PlayerChat {
+
     public static void initPlayerChat() {
         ChatChannel.addChannel("runner");
         ChatChannel.addChannel("hunter");
@@ -28,7 +29,7 @@ public class PlayerChat {
         ChatChannel.resetPlayerChat(player);
         ChatChannel.addPlayerChatChannel(player, "hunter");
         ChatChannel.setPlayerChatColor(player, ChatColor.WHITE);
-        ChatChannel.setPlayerChatPrefix(player, ChatColor.RED + "[猎杀者]");
+        ChatChannel.setPlayerChatPrefix(player, ChatColor.RED + "[猎人]");
     }
 
     public static void setPlayerChatObserver(UUID player) {

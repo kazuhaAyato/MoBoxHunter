@@ -18,8 +18,8 @@ public class ListenerQuit implements Listener {
         switch (GameBasicInfo.gameStatus) {
             case Waiting:
                 PlayerCache.playerList.remove(player.getUniqueId());
-                BasicInfo.choseTime.remove(ChatColor.WHITE+player.getName());
-                BasicInfo.choseFull.remove(ChatColor.WHITE+player.getName());
+                BasicInfo.choseTime.remove(ChatColor.WHITE + player.getName());
+                BasicInfo.choseFull.remove(ChatColor.WHITE + player.getName());
                 break;
             case Starting:
             case Running:

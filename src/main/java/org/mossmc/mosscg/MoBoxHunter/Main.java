@@ -8,6 +8,7 @@ import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.mossmc.mosscg.MoBoxCore.Chat.ChatChannel;
 import org.mossmc.mosscg.MoBoxCore.Game.GameBasicInfo;
 import org.mossmc.mosscg.MoBoxCore.Game.GameStatus;
 import org.mossmc.mosscg.MoBoxCore.Game.GameWait;
@@ -44,7 +45,7 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         InfoGroupBackend.sendPluginStartGroup(BasicInfo.pluginName, BasicInfo.pluginVersion);
         logger.info(ChatColor.GREEN + "正在注册事件监听器");
-        Bukkit.getPluginManager().registerEvents(new ListenerCraft(), this);
+//        Bukkit.getPluginManager().registerEvents(new ListenerCraft(), this);
         Bukkit.getPluginManager().registerEvents(new ListenerDamage(), this);
         Bukkit.getPluginManager().registerEvents(new ListenerDragon(), this);
         Bukkit.getPluginManager().registerEvents(new ListenerDrop(), this);
@@ -58,6 +59,7 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ListenerChat(), this);
         Bukkit.getPluginManager().registerEvents(new ListenerPing(), this);
         Bukkit.getPluginManager().registerEvents(new ListenerMove(), this);
+
         logger.info(ChatColor.GREEN + "事件监听器注册完成");
         Plugin pluginPlaceholderAPI = Bukkit.getPluginManager().getPlugin("PlaceholderAPI");
         if (pluginPlaceholderAPI != null) {

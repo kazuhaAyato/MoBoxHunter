@@ -9,14 +9,13 @@ import org.mossmc.mosscg.MoBoxHunter.BasicInfo;
 import org.mossmc.mosscg.MoBoxHunter.Player.PlayerCache;
 
 import java.text.SimpleDateFormat;
-import java.util.concurrent.TimeUnit;
+import java.util.UUID;
 
 public class PlaceHolderMain extends PlaceholderExpansion {
     @Override
     public String getAuthor() {
         return "MossCG";
     }
-
     @Override
     public String getIdentifier() {
         return "moboxhunter";
@@ -34,7 +33,12 @@ public class PlaceHolderMain extends PlaceholderExpansion {
             case "htremain":
                 return String.valueOf(PlayerCache.hunterList.size());
             case "rnremain":
-                return String.valueOf(PlayerCache.runnerList.size());
+                //TODO Optimize
+                 int l = 0;
+                 for(UUID uuid : PlayerCache.runnerStatusMap.keySet()){
+                     if(PlayerCache.runnerStatusMap.get(uuid) == BasicInfo.runnerStatus.Alive)l++;
+                 }
+                 return String.valueOf(l);
             case "role":
                 BasicInfo.playerRole role = PlayerCache.getPlayerRole(player.getUniqueId());
                 if (status == GameStatus.gameStatus.Waiting) {
@@ -69,12 +73,12 @@ public class PlaceHolderMain extends PlaceholderExpansion {
                 if (status == GameStatus.gameStatus.Waiting) {
                     return ChatColor.GRAY + "Not Available";
                 }
-
+                SimpleDateFormat format = new SimpleDateFormat("mm:ss");
                 if (BasicInfo.isFastMode) {
-                    SimpleDateFormat format = new SimpleDateFormat("mm:ss");
+
                     return (ChatColor.RED + "剩余时间: " + ChatColor.WHITE + format.format(1200000L - System.currentTimeMillis() + BasicInfo.StartTime));
                 } else {
-                    SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+
                     return (ChatColor.GREEN + "持续时间: " + ChatColor.WHITE + format.format(System.currentTimeMillis() - BasicInfo.StartTime));
                 }
             case "goal":

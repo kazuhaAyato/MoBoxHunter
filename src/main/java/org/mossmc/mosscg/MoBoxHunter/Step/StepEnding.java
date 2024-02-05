@@ -25,30 +25,35 @@ public class StepEnding {
         try {
             PlayerPoint.countPlayerPoint();
             PlayerPoint.savePlayerPoint();
-            Bukkit.getOnlinePlayers().forEach(player -> {
+            for (Player player : Bukkit.getOnlinePlayers()) {
                 player.setGameMode(GameMode.SPECTATOR);
                 if (BasicInfo.endLocation != null) {
                     player.teleport(BasicInfo.endLocation);
                 }
                 if (BasicInfo.winner.equals(BasicInfo.playerRole.Runner)) {
-                    if (BasicInfo.isFastMode) {
-                        player.sendTitle("§6§lVICTORY", "§a成功存活20分钟");
-                    } else {
-                        player.sendTitle("§6§lVICTORY", "§a成功击杀了末影龙");
+                    if (PlayerCache.runnerList.contains(player.getUniqueId())) {
+                        if (BasicInfo.isFastMode) {
+                            player.sendTitle("§6§lVICTORY", "§a成功存活20分钟");
+                        } else {
+                            player.sendTitle("§6§lVICTORY", "§a成功击杀了末影龙");
+                        }
                     }
                 } else {
-                    player.sendTitle("§6§lVICTORY", "§a成功消灭了逃亡者");
+                    if (PlayerCache.hunterList.contains(player.getUniqueId())) {
+                        player.sendTitle("§6§lVICTORY", "§a成功消灭了逃亡者");
+                    }
+
                 }
-            });
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
-//        Bukkit.broadcastMessage(ChatColor.GREEN+"本局积分排行：");
-//        Bukkit.broadcastMessage(ChatColor.GREEN+"第一名："+PlayerPoint.getRankPlayerName(1)+" - "+PlayerPoint.getRankPlayerPoint(1));
-//        Bukkit.broadcastMessage(ChatColor.GREEN+"第二名："+PlayerPoint.getRankPlayerName(2)+" - "+PlayerPoint.getRankPlayerPoint(2));
-//        Bukkit.broadcastMessage(ChatColor.GREEN+"第三名："+PlayerPoint.getRankPlayerName(3)+" - "+PlayerPoint.getRankPlayerPoint(3));
-//        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
+        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
+        Bukkit.broadcastMessage(ChatColor.GREEN + "本局排名：");
+        Bukkit.broadcastMessage(ChatColor.RED + "第一名：" + PlayerPoint.getRankPlayerName(1));
+        Bukkit.broadcastMessage(ChatColor.GOLD + "第二名：" + PlayerPoint.getRankPlayerName(2));
+        Bukkit.broadcastMessage(ChatColor.YELLOW + "第三名：" + PlayerPoint.getRankPlayerName(3));
+        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
 //        PlayerPoint.playerCompleteList.forEach(uuid -> {
 //            Player player = Bukkit.getPlayer(uuid);
 //            if (player != null) {
