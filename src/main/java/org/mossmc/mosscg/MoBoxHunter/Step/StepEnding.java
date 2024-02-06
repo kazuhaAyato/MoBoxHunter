@@ -1,5 +1,6 @@
 package org.mossmc.mosscg.MoBoxHunter.Step;
 
+import com.alonsoaliaga.alonsolevels.api.AlonsoLevelsAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -54,17 +55,18 @@ public class StepEnding {
         Bukkit.broadcastMessage(ChatColor.GOLD + "第二名：" + PlayerPoint.getRankPlayerName(2));
         Bukkit.broadcastMessage(ChatColor.YELLOW + "第三名：" + PlayerPoint.getRankPlayerName(3));
         Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
-//        PlayerPoint.playerCompleteList.forEach(uuid -> {
-//            Player player = Bukkit.getPlayer(uuid);
-//            if (player != null) {
-//                player.sendMessage(ChatColor.GREEN + "基础积分：" + PlayerPoint.basicPoint);
-//                if (PlayerCache.getPlayerRole(uuid).equals(BasicInfo.winner)) {
-//                    player.sendMessage(ChatColor.GREEN + "胜利积分：" + PlayerPoint.getPlayerWinnerPoint(uuid));
-//                }
-//                player.sendMessage(ChatColor.GREEN + "击杀积分：" + PlayerPoint.playerPointKillMap.getOrDefault(uuid, 0));
-//                player.sendMessage(ChatColor.GREEN + "本局总积分：" + PlayerPoint.playerPointMap.get(uuid));
-//            }
-//        });
+        PlayerPoint.playerCompleteList.forEach(uuid -> {
+            Player player = Bukkit.getPlayer(uuid);
+            if (player != null) {
+                player.sendMessage(ChatColor.GREEN + "基础经验：" + PlayerPoint.basicPoint);
+                if (PlayerCache.getPlayerRole(uuid).equals(BasicInfo.winner)) {
+                    player.sendMessage(ChatColor.GREEN + "胜利经验：" + PlayerPoint.getPlayerWinnerPoint(uuid));
+                }
+                player.sendMessage(ChatColor.GREEN + "击杀经验：" + PlayerPoint.playerPointKillMap.getOrDefault(uuid, 0));
+                player.sendMessage(ChatColor.GREEN + "本局总经验：" + PlayerPoint.playerPointMap.get(uuid));
+                AlonsoLevelsAPI.addLevel(uuid,PlayerPoint.playerPointMap.get(uuid));
+            }
+        });
         Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
         Main.logger.info(ChatColor.GREEN + "游戏进入到结束阶段！");
         GameEnd.startEnd();

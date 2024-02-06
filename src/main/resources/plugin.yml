@@ -4,7 +4,7 @@ api-version: '1.17'
 main: org.mossmc.mosscg.MoBoxHunter.Main
 author: MossCG
 description: A plugin by MossCG for MoBoxMC.
-softdepend: [MoBoxCore]
+softdepend: [MoBoxCore,AlongsoLevels]
 commands:
   moboxhunter:
     description: 主指令

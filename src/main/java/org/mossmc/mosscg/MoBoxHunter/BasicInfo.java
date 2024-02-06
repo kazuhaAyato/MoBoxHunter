@@ -27,6 +27,7 @@ public class BasicInfo {
     public static Location endLocation;
 
     public static int startTime = 10;
+    public static int timer = 0;
 
     public enum playerRole {
         Hunter, Runner, Observer
