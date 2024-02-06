@@ -21,6 +21,7 @@ public class TickerRunnable implements Runnable {
             PlayerPoint.playerCompleteList.forEach(uuid -> {
                 AlonsoLevelsAPI.addExperience(uuid,2);
             });
+            BasicInfo.timer = 0;
         }
         if (!BasicInfo.isFastMode) return;
         if (GameBasicInfo.gameStatus == GameStatus.gameStatus.Ending) return;

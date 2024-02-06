@@ -65,6 +65,7 @@ public class StepEnding {
                 player.sendMessage(ChatColor.GREEN + "击杀经验：" + PlayerPoint.playerPointKillMap.getOrDefault(uuid, 0));
                 player.sendMessage(ChatColor.GREEN + "本局总经验：" + PlayerPoint.playerPointMap.get(uuid));
                 AlonsoLevelsAPI.addLevel(uuid,PlayerPoint.playerPointMap.get(uuid));
+                // NOTICE - THIS IS ONLY FOR MY NETWORK. PLEASE MODIFY THIS
             }
         });
         Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
