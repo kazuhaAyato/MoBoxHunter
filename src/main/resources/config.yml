@@ -10,7 +10,7 @@ minPlayer: 4
 #如默认值1 3代表分配一个逃亡者，三个猎杀者
 #分配的时候是先分配一个逃亡者，然后再分配三个猎杀者，再分配一个逃亡者这样的
 partRunner: 1
-partHunter: 3
+partHunter: 2
 
 #时间设置（单位均为秒）
 #开始游戏前等待时间
@@ -32,7 +32,7 @@ radarWarnDistance: 50
 teamDamage: true
 
 #开局有指南针
-startCompass: false
+startCompass: true
 
 #出生点设置
 #偏移均为随机正负值，随机偏移必须大于零

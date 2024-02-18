@@ -66,11 +66,13 @@ public class Main extends JavaPlugin {
             logger.info(ChatColor.GREEN + "检测到PlaceHolderAPI插件，变量功能已启用！");
             new PlaceHolderMain().register();
         }
-        Plugin MoBoxPoint = Bukkit.getPluginManager().getPlugin("MoBoxPoint");
-        if (MoBoxPoint != null) {
-            logger.info(ChatColor.GREEN + "检测到MoBoxPoint插件，积分功能已启用！");
-            BasicInfo.canPoint = true;
-        }
+//        Plugin MoBoxPoint = Bukkit.getPluginManager().getPlugin("AlonsoLevels");
+//        if (MoBoxPoint != null) {
+//            logger.info(ChatColor.GREEN + "检测到MoBoxPoint插件，积分功能已启用！");
+//
+//        }
+        // haha - depend[]
+        BasicInfo.canPoint = true;
         StepWaiting.runStep();
     }
 

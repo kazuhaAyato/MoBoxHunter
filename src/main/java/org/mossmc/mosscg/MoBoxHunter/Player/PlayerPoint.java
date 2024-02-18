@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.mossmc.mosscg.MoBoxHunter.BasicInfo;
 import org.mossmc.mosscg.MoBoxHunter.Main;
-import org.mossmc.mosscg.MoBoxPoint.User.UserUpdate;
+
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
@@ -60,9 +60,15 @@ public class PlayerPoint {
         });
 
         if (BasicInfo.winner.equals(BasicInfo.playerRole.Runner)) {
-            PlayerCache.runnerList.forEach(uuid -> {
-                addPlayerPoint(uuid, pointWinnerRunner);
-            });
+            if(!BasicInfo.isFastMode){
+                PlayerCache.runnerList.forEach(uuid -> {
+                     addPlayerPoint(uuid, pointWinnerRunner*20);
+                });
+            }else{
+                PlayerCache.runnerList.forEach(uuid -> {
+                    addPlayerPoint(uuid, pointWinnerRunner);
+                });
+            }
         }
 
         if (BasicInfo.winner.equals(BasicInfo.playerRole.Hunter)) {
@@ -86,24 +92,6 @@ public class PlayerPoint {
             return;
         }
         //增加本场积分（包括基础积分，击杀积分，胜场积分）
-        playerPointMap.forEach((uuid, integer) -> {
-            OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
-            if (!playerCompleteList.contains(uuid)) {
-                UserUpdate.userAddScore(player.getName(), pointNameMain, integer);
-                playerCompleteList.add(uuid);
-            }
-        });
-
-        //记录玩家数据
-        playerCompleteList.forEach(uuid -> UserUpdate.userAddScore(uuid, pointNameTotal, 1));
-        PlayerStatic.killCount.forEach((uuid, integer) -> UserUpdate.userAddScore(uuid, pointNameKill, integer));
-        PlayerStatic.deathCount.forEach((uuid, integer) -> UserUpdate.userAddScore(uuid, pointNameDeath, integer));
-        if (BasicInfo.winner.equals(BasicInfo.playerRole.Hunter)) {
-            PlayerCache.hunterList.forEach(uuid -> UserUpdate.userAddScore(uuid, pointNameWin, 1));
-        }
-        if (BasicInfo.winner.equals(BasicInfo.playerRole.Runner)) {
-            PlayerCache.runnerList.forEach(uuid -> UserUpdate.userAddScore(uuid, pointNameWin, 1));
-        }
     }
 
     public static void addPlayerPoint(UUID uuid, int point) {

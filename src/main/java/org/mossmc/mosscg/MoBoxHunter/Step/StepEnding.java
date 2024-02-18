@@ -25,7 +25,6 @@ public class StepEnding {
         Bukkit.broadcastMessage(ChatColor.AQUA + "正在结算玩家信息！");
         try {
             PlayerPoint.countPlayerPoint();
-            PlayerPoint.savePlayerPoint();
             for (Player player : Bukkit.getOnlinePlayers()) {
                 player.setGameMode(GameMode.SPECTATOR);
                 if (BasicInfo.endLocation != null) {
@@ -55,7 +54,7 @@ public class StepEnding {
         Bukkit.broadcastMessage(ChatColor.GOLD + "第二名：" + PlayerPoint.getRankPlayerName(2));
         Bukkit.broadcastMessage(ChatColor.YELLOW + "第三名：" + PlayerPoint.getRankPlayerName(3));
         Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
-        PlayerPoint.playerCompleteList.forEach(uuid -> {
+        PlayerPoint.playerPointMap.forEach((uuid,integer) -> {
             Player player = Bukkit.getPlayer(uuid);
             if (player != null) {
                 player.sendMessage(ChatColor.GREEN + "基础经验：" + PlayerPoint.basicPoint);
@@ -64,12 +63,13 @@ public class StepEnding {
                 }
                 player.sendMessage(ChatColor.GREEN + "击杀经验：" + PlayerPoint.playerPointKillMap.getOrDefault(uuid, 0));
                 player.sendMessage(ChatColor.GREEN + "本局总经验：" + PlayerPoint.playerPointMap.get(uuid));
-                AlonsoLevelsAPI.addLevel(uuid,PlayerPoint.playerPointMap.get(uuid));
-                // NOTICE - THIS IS ONLY FOR MY NETWORK. PLEASE MODIFY THIS
+                AlonsoLevelsAPI.addExperience(uuid,integer);
+                // NOTICE - THIS IS ONLY FOR MY NETWORK.
             }
         });
         Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
         Main.logger.info(ChatColor.GREEN + "游戏进入到结束阶段！");
+
         GameEnd.startEnd();
 
     }

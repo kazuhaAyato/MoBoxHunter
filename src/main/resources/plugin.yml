@@ -2,9 +2,9 @@ name: MoBoxHunter
 version: '${project.version}'
 api-version: '1.17'
 main: org.mossmc.mosscg.MoBoxHunter.Main
-author: MossCG
+authors: [MossCG,Frkovo]
 description: A plugin by MossCG for MoBoxMC.
-softdepend: [MoBoxCore,AlongsoLevels]
+depend:  [MoBoxCore,AlonsoLevels,PlaceholderAPI]
 commands:
   moboxhunter:
     description: 主指令

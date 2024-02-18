@@ -7,6 +7,7 @@ import org.mossmc.mosscg.MoBoxCore.Game.GameStatus;
 import org.mossmc.mosscg.MoBoxCore.Game.GameWait;
 import org.mossmc.mosscg.MoBoxHunter.BasicInfo;
 import org.mossmc.mosscg.MoBoxHunter.Main;
+import org.mossmc.mosscg.MoBoxHunter.Player.PlayerChat;
 import org.mossmc.mosscg.MoBoxHunter.World.WorldRule;
 
 public class StepWaiting {
@@ -63,6 +64,7 @@ public class StepWaiting {
                 }
             };
             GameBasicInfo.getGame = game;
+            PlayerChat.initNormalChat();
             GameBasicInfo.gameStatus = GameStatus.gameStatus.Waiting;
             GameBasicInfo.startMethod = StepStarting.class.getMethod("runStep");
             GameBasicInfo.runMethod = StepRunning.class.getMethod("runStep");

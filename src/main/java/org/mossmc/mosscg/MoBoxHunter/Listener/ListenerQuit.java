@@ -1,5 +1,6 @@
 package org.mossmc.mosscg.MoBoxHunter.Listener;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,6 +19,7 @@ public class ListenerQuit implements Listener {
         switch (GameBasicInfo.gameStatus) {
             case Waiting:
                 PlayerCache.playerList.remove(player.getUniqueId());
+                event.setQuitMessage(ChatColor.translateAlternateColorCodes('&',PlaceholderAPI.setPlaceholders(event.getPlayer(),"%luckperms_prefix%%player_name%%luckperms_suffix%&c离开了游戏！")));
                 BasicInfo.choseTime.remove(ChatColor.WHITE + player.getName());
                 BasicInfo.choseFull.remove(ChatColor.WHITE + player.getName());
                 break;

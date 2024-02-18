@@ -1,5 +1,6 @@
 package org.mossmc.mosscg.MoBoxHunter.Listener;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -26,7 +27,9 @@ public class ListenerJoin implements Listener {
             case Waiting:
                 PlayerCache.playerList.add(player.getUniqueId());
                 player.getInventory().clear();
+                PlayerChat.initPlayerNormalChat(player);
                 player.setGameMode(GameMode.ADVENTURE);
+                event.setJoinMessage(ChatColor.translateAlternateColorCodes('&',PlaceholderAPI.setPlaceholders(event.getPlayer(),"%luckperms_prefix%%player_name%%luckperms_suffix%&e加入了游戏！")));
                 PlayerDamage.disableDamage(player);
                 PlayerPick.disablePickUp(player);
                 Inventory inventory = Bukkit.createInventory(player, 27, "投票选择游戏模式");
