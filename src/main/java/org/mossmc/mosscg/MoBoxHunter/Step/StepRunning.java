@@ -1,10 +1,9 @@
 package org.mossmc.mosscg.MoBoxHunter.Step;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.mossmc.mosscg.MoBoxCore.Game.GameBasicInfo;
 import org.mossmc.mosscg.MoBoxCore.Game.GameStatus;
@@ -17,6 +16,8 @@ import org.mossmc.mosscg.MoBoxHunter.Player.PlayerCache;
 import org.mossmc.mosscg.MoBoxHunter.Player.PlayerDamage;
 import org.mossmc.mosscg.MoBoxHunter.World.TickerRunnable;
 import org.mossmc.mosscg.MoBoxHunter.World.WorldRule;
+
+import java.util.Random;
 
 @SuppressWarnings("deprecation")
 public class StepRunning {
@@ -42,6 +43,7 @@ public class StepRunning {
         BasicInfo.StartTime = System.currentTimeMillis();
         Bukkit.getScheduler().runTaskTimer(Main.instance, new TickerRunnable(), 0L, 20L);
         BasicInfo.startTime = Main.getConfig.getInt("startTime");
+        final int[] s = {0};
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -70,6 +72,19 @@ public class StepRunning {
                     BasicInfo.canInteract = true;
                     BasicInfo.canDamage = true;
                     WorldRule.setAfterStartStatus();
+                    if(s[0] != 2){
+                        s[0] += 1;
+                    }else {
+                       if(Bukkit.getPluginManager().getPlugin("RandomEvents") != null){
+                       PlayerCache.playerList.forEach(uuid -> {
+                            Bukkit.getPlayer(uuid).addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS,40,1));
+                            Bukkit.getPlayer(uuid).sendTitle("§c§l随机事件","§e本局游戏为随机事件局!",5,60,5);
+                        });
+                    }
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"randomevents start 60");
+                    }
+
+
                     cancel();
                 }
             }

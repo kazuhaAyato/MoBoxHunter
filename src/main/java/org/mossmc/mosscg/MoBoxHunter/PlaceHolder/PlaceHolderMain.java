@@ -75,10 +75,8 @@ public class PlaceHolderMain extends PlaceholderExpansion {
                 }
                 SimpleDateFormat format = new SimpleDateFormat("mm:ss");
                 if (BasicInfo.isFastMode) {
-
                     return (ChatColor.RED + "剩余时间: " + ChatColor.WHITE + format.format(1200000L - System.currentTimeMillis() + BasicInfo.StartTime));
                 } else {
-
                     return (ChatColor.GREEN + "持续时间: " + ChatColor.WHITE + format.format(System.currentTimeMillis() - BasicInfo.StartTime));
                 }
             case "goal":

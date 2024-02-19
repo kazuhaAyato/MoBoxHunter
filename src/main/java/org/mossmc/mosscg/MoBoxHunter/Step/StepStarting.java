@@ -17,7 +17,7 @@ import org.mossmc.mosscg.MoBoxHunter.Player.*;
 public class StepStarting {
     public static void runStep() {
         Main.logger.info(ChatColor.GREEN + "游戏正在进入启动阶段！");
-        BasicInfo.isFastMode = BasicInfo.choseFull.size() < BasicInfo.choseTime.size();
+        BasicInfo.isFastMode = BasicInfo.choseFull.size() <= BasicInfo.choseTime.size();
         GameBasicInfo.gameStatus = GameStatus.gameStatus.Starting;
         PlayerDistribute.distribute();
         PlayerLocation.initLocation();

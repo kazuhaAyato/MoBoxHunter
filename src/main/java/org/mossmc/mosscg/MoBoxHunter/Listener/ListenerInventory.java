@@ -14,7 +14,7 @@ public class ListenerInventory implements Listener {
 
     @EventHandler
     public static void onInvClick(InventoryClickEvent e) {
-        if (e.getView().getTitle().equalsIgnoreCase("投票选择游戏模式")) {
+        if (e.getView().getTitle().equalsIgnoreCase("投票选择游戏模式"))    {
             e.setCancelled(true);
             if (e.getCurrentItem() == null) return;
             if (Objects.requireNonNull(e.getCurrentItem()).getType() == Material.CLOCK) {

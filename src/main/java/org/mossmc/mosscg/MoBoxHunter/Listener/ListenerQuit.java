@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.mossmc.mosscg.MoBoxCore.Game.GameBasicInfo;
+import org.mossmc.mosscg.MoBoxCore.Main;
 import org.mossmc.mosscg.MoBoxHunter.BasicInfo;
 import org.mossmc.mosscg.MoBoxHunter.Player.PlayerCache;
 import org.mossmc.mosscg.MoBoxHunter.Player.PlayerReconnect;
@@ -19,7 +20,7 @@ public class ListenerQuit implements Listener {
         switch (GameBasicInfo.gameStatus) {
             case Waiting:
                 PlayerCache.playerList.remove(player.getUniqueId());
-                event.setQuitMessage(ChatColor.translateAlternateColorCodes('&',PlaceholderAPI.setPlaceholders(event.getPlayer(),"%luckperms_prefix%%player_name%%luckperms_suffix%&c离开了游戏！")));
+                event.setQuitMessage(ChatColor.translateAlternateColorCodes('&',PlaceholderAPI.setPlaceholders(event.getPlayer(),"%luckperms_prefix%%player_name%%luckperms_suffix%离开了游戏！")));
                 BasicInfo.choseTime.remove(ChatColor.WHITE + player.getName());
                 BasicInfo.choseFull.remove(ChatColor.WHITE + player.getName());
                 break;

@@ -23,7 +23,7 @@ public class TickerRunnable implements Runnable {
                 Player p = Bukkit.getPlayer(uuid);
                 if(p != null) {
                     AlonsoLevelsAPI.addExperience(uuid, 2);
-                    Bukkit.getPlayer(uuid).sendMessage(ChatColor.translateAlternateColorCodes('&', "&b+3追杀精通经验(游戏时长)"));
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b+3追杀精通经验(游戏时长)"));
                 }
                 });
             Main.logger.info("+2exp for each player");

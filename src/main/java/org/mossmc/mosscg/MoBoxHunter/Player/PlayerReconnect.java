@@ -56,6 +56,7 @@ public class PlayerReconnect {
         ChatChannel.resetPlayerChat(uuid);
         kickCache.add(uuid);
         PlayerCheck.check();
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"repu " + Bukkit.getOfflinePlayer(uuid).getName() + " -10"); // -10 信誉分
         Bukkit.broadcastMessage(ChatColor.RED + "玩家" + player.getName() + "超出等待时间未归！已被移出本场游戏！");
         Bukkit.broadcastMessage(ChatColor.DARK_GREEN + "当前玩家列表：");
         Bukkit.broadcastMessage(ChatColor.RED + "猎人: " + PlayerCache.getHunterNameList());

@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.GameRule;
 import org.bukkit.Location;
+import org.mossmc.mosscg.MoBoxHunter.BasicInfo;
 import org.mossmc.mosscg.MoBoxHunter.Player.PlayerLocation;
 
 public class WorldRule {
@@ -23,6 +24,11 @@ public class WorldRule {
     public static void setAfterStartStatus() {
         Bukkit.getWorlds().forEach(world -> {
             world.setPVP(true);
+            if(BasicInfo.isFastMode){
+                world.getWorldBorder().setCenter(new Location(world,0.0,0.0,0.0));
+                world.getWorldBorder().setSize(1000);
+                world.setGameRule(GameRule.KEEP_INVENTORY,true);
+            }
             world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, true);
             world.setGameRule(GameRule.DO_MOB_SPAWNING, true);
             world.setGameRule(GameRule.DO_ENTITY_DROPS, true);

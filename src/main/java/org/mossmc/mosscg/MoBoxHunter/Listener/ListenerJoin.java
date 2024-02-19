@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.mossmc.mosscg.MoBoxCore.Game.GameBasicInfo;
+import org.mossmc.mosscg.MoBoxCore.Main;
 import org.mossmc.mosscg.MoBoxCore.Player.PlayerPick;
 import org.mossmc.mosscg.MoBoxHunter.BasicInfo;
 import org.mossmc.mosscg.MoBoxHunter.Player.PlayerCache;
@@ -29,7 +30,7 @@ public class ListenerJoin implements Listener {
                 player.getInventory().clear();
                 PlayerChat.initPlayerNormalChat(player);
                 player.setGameMode(GameMode.ADVENTURE);
-                event.setJoinMessage(ChatColor.translateAlternateColorCodes('&',PlaceholderAPI.setPlaceholders(event.getPlayer(),"%luckperms_prefix%%player_name%%luckperms_suffix%&e加入了游戏！")));
+                event.setJoinMessage(ChatColor.translateAlternateColorCodes('&',PlaceholderAPI.setPlaceholders(event.getPlayer(),"%luckperms_prefix%%player_name%%luckperms_suffix%&e加入了游戏(&b"+ Main.instance.getServer().getOnlinePlayers().size()+"&e/&b"+GameBasicInfo.getGame.maxPlayer()+"&e)")));
                 PlayerDamage.disableDamage(player);
                 PlayerPick.disablePickUp(player);
                 Inventory inventory = Bukkit.createInventory(player, 27, "投票选择游戏模式");

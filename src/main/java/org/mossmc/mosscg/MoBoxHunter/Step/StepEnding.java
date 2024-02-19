@@ -34,13 +34,16 @@ public class StepEnding {
                     if (PlayerCache.runnerList.contains(player.getUniqueId())) {
                         if (BasicInfo.isFastMode) {
                             player.sendTitle("§6§lVICTORY", "§a成功存活20分钟");
+                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"repu " + player.getName() + " +1");
                         } else {
                             player.sendTitle("§6§lVICTORY", "§a成功击杀了末影龙");
+                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"repu " + player.getName() + " +3");
                         }
                     }
                 } else {
                     if (PlayerCache.hunterList.contains(player.getUniqueId())) {
                         player.sendTitle("§6§lVICTORY", "§a成功消灭了逃亡者");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"repu " + player.getName() + " +1");
                     }
 
                 }
@@ -55,6 +58,7 @@ public class StepEnding {
         Bukkit.broadcastMessage(ChatColor.YELLOW + "第三名：" + PlayerPoint.getRankPlayerName(3));
         Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
         PlayerPoint.playerPointMap.forEach((uuid,integer) -> {
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"repu " + Bukkit.getOfflinePlayer(uuid).getName() + " +3");
             Player player = Bukkit.getPlayer(uuid);
             if (player != null) {
                 player.sendMessage(ChatColor.GREEN + "基础经验：" + PlayerPoint.basicPoint);
