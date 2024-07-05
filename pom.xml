@@ -37,13 +37,6 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/PlaceholderAPI-2.11.5.jar</systemPath>
         </dependency>
-        <dependency>
-            <groupId>com.alongsoaliaga</groupId>
-            <artifactId>AlongsoLevels</artifactId>
-            <version>2.4</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/AlonsoLevels-v2.3.2-BETA.jar</systemPath>
-        </dependency>
 
     </dependencies>
 

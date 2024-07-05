@@ -16,7 +16,7 @@ public class PlayerChat {
     }
     public static void initPlayerNormalChat(Player p){
         ChatChannel.addPlayerChatChannel(p.getUniqueId(),"default");
-        ChatChannel.setPlayerChatPrefix(p.getUniqueId(), ChatColor.translateAlternateColorCodes('&',"&8[&b%alonsolevels_level_format%&8]%luckperms_prefix%"));
+        ChatChannel.setPlayerChatPrefix(p.getUniqueId(), ChatColor.translateAlternateColorCodes('&',"&8[&b&b%clv_player_level_colored%✰&8]%luckperms_prefix%"));
     }
     public static void initPlayerChat() {
 
@@ -33,21 +33,21 @@ public class PlayerChat {
         ChatChannel.resetPlayerChat(player);
         ChatChannel.addPlayerChatChannel(player, "runner");
         ChatChannel.setPlayerChatColor(player, ChatColor.WHITE);
-        ChatChannel.setPlayerChatPrefix(player,ChatColor.translateAlternateColorCodes('&',"&8[&b%alonsolevels_level_format%&8]"+ ChatColor.GREEN + "[逃亡者]"));
+        ChatChannel.setPlayerChatPrefix(player,ChatColor.translateAlternateColorCodes('&',"&8[&b%clv_player_level_colored%✰&8]"+ ChatColor.GREEN + "[逃亡者]"));
     }
 
     public static void setPlayerChatHunter(UUID player) {
         ChatChannel.resetPlayerChat(player);
         ChatChannel.addPlayerChatChannel(player, "hunter");
         ChatChannel.setPlayerChatColor(player, ChatColor.WHITE);
-        ChatChannel.setPlayerChatPrefix(player, ChatColor.translateAlternateColorCodes('&',"&8[&b%alonsolevels_level_format%&8]"+ ChatColor.RED + "[猎人]"));
+        ChatChannel.setPlayerChatPrefix(player, ChatColor.translateAlternateColorCodes('&',"&8[&b%clv_player_level_colored%✰&8]"+ ChatColor.RED + "[猎人]"));
     }
 
     public static void setPlayerChatObserver(UUID player) {
         ChatChannel.resetPlayerChat(player);
         ChatChannel.addPlayerChatChannel(player, "observer");
         ChatChannel.setPlayerChatColor(player, ChatColor.GRAY);
-        ChatChannel.setPlayerChatPrefix(player, ChatColor.GRAY + ChatColor.translateAlternateColorCodes('&',"&8[&b%alonsolevels_level_format%&8]"+ ChatColor.GRAY + "[观察者]"));
+        ChatChannel.setPlayerChatPrefix(player, ChatColor.GRAY + ChatColor.translateAlternateColorCodes('&',"&8[&b%clv_player_level_colored%✰&8]"+ ChatColor.GRAY + "[观察者]"));
     }
 
 }

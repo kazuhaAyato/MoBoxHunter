@@ -123,6 +123,16 @@ public class Main extends JavaPlugin {
         if (args.length < 1) {
             return false;
         }
+        sender.sendMessage("§f=========================================");
+        sender.sendMessage("§f");
+        sender.sendMessage("§3猎人游戏§bHunters §f- v"+ Main.instance.getDescription().getVersion());
+        sender.sendMessage("§7§o遊生夢死 才能ない脳内 唱えよシスターズ");
+        sender.sendMessage("§f");
+        sender.sendMessage("§f原作者 -> §nMossCG");
+        sender.sendMessage("§fBUG反馈/提交建议 -> §nfrkovo@qq.com");
+        sender.sendMessage("§f");
+        sender.sendMessage("§f=========================================");
+        if(!sender.hasPermission("group.owner"))return true;
         switch (args[0]) {
             case "help":
                 if (!sender.hasPermission("moboxhunter.help") && !sender.isOp()) {

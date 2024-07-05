@@ -4,7 +4,9 @@ api-version: '1.17'
 main: org.mossmc.mosscg.MoBoxHunter.Main
 authors: [MossCG,Frkovo]
 description: A plugin by MossCG for MoBoxMC.
-depend:  [MoBoxCore,AlonsoLevels,PlaceholderAPI]
+depend:  [MoBoxCore,PlaceholderAPI]
+softdepend:
+  - RandomEvents
 commands:
   moboxhunter:
     description: 主指令

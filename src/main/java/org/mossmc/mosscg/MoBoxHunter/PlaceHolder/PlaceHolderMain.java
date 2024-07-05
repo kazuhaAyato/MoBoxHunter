@@ -33,12 +33,7 @@ public class PlaceHolderMain extends PlaceholderExpansion {
             case "htremain":
                 return String.valueOf(PlayerCache.hunterList.size());
             case "rnremain":
-                //TODO Optimize
-                 int l = 0;
-                 for(UUID uuid : PlayerCache.runnerStatusMap.keySet()){
-                     if(PlayerCache.runnerStatusMap.get(uuid) == BasicInfo.runnerStatus.Alive)l++;
-                 }
-                 return String.valueOf(l);
+                 return String.valueOf(PlayerCache.runnerStatusMap.values().stream().filter(sb -> sb == BasicInfo.runnerStatus.Alive).count());
             case "role":
                 BasicInfo.playerRole role = PlayerCache.getPlayerRole(player.getUniqueId());
                 if (status == GameStatus.gameStatus.Waiting) {

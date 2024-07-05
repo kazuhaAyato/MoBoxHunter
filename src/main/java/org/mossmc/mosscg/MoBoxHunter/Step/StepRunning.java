@@ -25,7 +25,7 @@ public class StepRunning {
         Main.logger.info(ChatColor.GREEN + "游戏正在进入游玩阶段！");
         GameBasicInfo.gameStatus = GameStatus.gameStatus.Running;
         Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "====================================");
-        Bukkit.broadcastMessage(ChatColor.GOLD + "极限追杀 §f@ " + Main.getConfig.getString("server-name"));
+        Bukkit.broadcastMessage(ChatColor.GOLD + "  追杀 §f@ " + Main.getConfig.getString("server-name"));
         if (BasicInfo.isFastMode) {
             Bukkit.broadcastMessage(ChatColor.AQUA + "游戏规则：猎人需要阻止逃亡者击杀末影龙或击杀逃亡者以取得胜利。");
             Bukkit.broadcastMessage(ChatColor.AQUA + "逃亡者需要在猎人的追杀下§c生存20分钟§b. 逃亡者无法复活且由于任何原因死亡均会导致猎人胜利。");
@@ -43,7 +43,7 @@ public class StepRunning {
         BasicInfo.StartTime = System.currentTimeMillis();
         Bukkit.getScheduler().runTaskTimer(Main.instance, new TickerRunnable(), 0L, 20L);
         BasicInfo.startTime = Main.getConfig.getInt("startTime");
-        final int[] s = {0};
+        int[] s = {0};
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -72,16 +72,13 @@ public class StepRunning {
                     BasicInfo.canInteract = true;
                     BasicInfo.canDamage = true;
                     WorldRule.setAfterStartStatus();
-                    if(s[0] != 2){
-                        s[0] += 1;
-                    }else {
-                       if(Bukkit.getPluginManager().getPlugin("RandomEvents") != null){
-                       PlayerCache.playerList.forEach(uuid -> {
-                            Bukkit.getPlayer(uuid).addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS,40,1));
-                            Bukkit.getPlayer(uuid).sendTitle("§c§l随机事件","§e本局游戏为随机事件局!",5,60,5);
-                        });
-                    }
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"randomevents start 60");
+
+                       if(true){
+                           PlayerCache.playerList.forEach(uuid -> {
+                                Bukkit.getPlayer(uuid).addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS,40,1));
+                                Bukkit.getPlayer(uuid).sendTitle("§c§l随机事件","§e本局游戏为随机事件局!",5,60,5);
+                            });
+                       Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"randomevents start 60");
                     }
 
 
