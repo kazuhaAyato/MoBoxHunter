@@ -72,14 +72,14 @@ public class StepRunning {
                     BasicInfo.canInteract = true;
                     BasicInfo.canDamage = true;
                     WorldRule.setAfterStartStatus();
-
-                       if(true){
-                           PlayerCache.playerList.forEach(uuid -> {
-                                Bukkit.getPlayer(uuid).addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS,40,1));
-                                Bukkit.getPlayer(uuid).sendTitle("§c§l随机事件","§e本局游戏为随机事件局!",5,60,5);
-                            });
-                       Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"randomevents start 60");
-                    }
+//
+//                    if(false){
+//                           PlayerCache.playerList.forEach(uuid -> {
+//                                Bukkit.getPlayer(uuid).addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS,40,1));
+//                                Bukkit.getPlayer(uuid).sendTitle("§c§l随机事件","§e本局游戏为随机事件局!",5,60,5);
+//                            });
+//                       Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"randomevents start 60");
+//                    }
 
 
                     cancel();

@@ -1,8 +1,5 @@
 package org.mossmc.mosscg.MoBoxHunter.Player;
 
-import com.alonsoaliaga.alonsolevels.api.AlonsoLevelsAPI;
-import me.clip.placeholderapi.PlaceholderAPI;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.mossmc.mosscg.MoBoxCore.Chat.ChatChannel;

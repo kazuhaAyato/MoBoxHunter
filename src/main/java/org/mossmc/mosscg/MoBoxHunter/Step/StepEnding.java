@@ -1,6 +1,6 @@
 package org.mossmc.mosscg.MoBoxHunter.Step;
 
-import com.alonsoaliaga.alonsolevels.api.AlonsoLevelsAPI;
+import org.mossmc.mosscg.MoBoxHunter.AlonsoLevelsAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;

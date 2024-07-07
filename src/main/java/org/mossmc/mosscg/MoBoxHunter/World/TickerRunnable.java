@@ -1,6 +1,6 @@
 package org.mossmc.mosscg.MoBoxHunter.World;
 
-import com.alonsoaliaga.alonsolevels.api.AlonsoLevelsAPI;
+import org.mossmc.mosscg.MoBoxHunter.AlonsoLevelsAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -9,7 +9,6 @@ import org.mossmc.mosscg.MoBoxCore.Game.GameStatus;
 import org.mossmc.mosscg.MoBoxHunter.BasicInfo;
 import org.mossmc.mosscg.MoBoxHunter.Main;
 import org.mossmc.mosscg.MoBoxHunter.Player.PlayerCache;
-import org.mossmc.mosscg.MoBoxHunter.Player.PlayerPoint;
 import org.mossmc.mosscg.MoBoxHunter.Step.StepEnding;
 
 import java.util.Objects;
